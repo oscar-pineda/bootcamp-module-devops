@@ -90,14 +90,14 @@ Resources:
         MinInstancesInService: 1
         MaxBatchSize: 2
         PauseTime: PT15M
-        WaitOnResourceSignals: true
-    Properties:
-      AvailabilityZones: !GetAZs
-      LaunchConfigurationName: !Ref LaunchConfiguration
-      DesdCapacity: 1
-      MaxSize: 3
-      MinSize: 1
-      LoadBalancerNames:
+    WaitOnResourceSignals: true
+Properties:
+  AvailabilityZones: !GetAZs
+  LaunchConfigurationName: !Ref LaunchConfiguration
+  DesdCapacity: 1
+  MaxSize: 3
+  MinSize: 1
+  LoadBalancerNames:
         - !Ref LoadBalancer
       Tags:
         - Key: Name
