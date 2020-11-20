@@ -123,17 +123,17 @@ Resources:
           yum update -y
           yum install -y ruby wget
           cd /home/ec2-user
-          wget HTTPS://AWS-CODEDEPLOY-${AWS::REGION}.S3.${AWS::REGION}.AMAZONAWS.COM/LATEST/INSTALL
-          CHMOD +X ./INSTALL
-          ./INSTALL AUTO
-          SERVICE CODEDEPLOY-AGENT START
-          SERVICE CODEDEPLOY-AGENT STATUS
+          wget https://aws-codedeploy-${AWS::Region}.s3.${AWS::Region}.amazonaws.com/latest/install
+          chmod +x ./install
+          ./install auto
+          service codedeploy-agent start
+          service codedeploy-agent status
   AutoScalingGroup:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
       AvailabilityZones: !GetAZs
       LaunchConfigurationName: !Ref LaunchConfiguration
-      DesiredCapacity: 3
+      DesiredCapacity: 2
       MaxSize: 3
       MinSize: 1
       LoadBalancerNames:
