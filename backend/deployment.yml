@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend-app
+  template:
+    metadata:
+      name: api
+      labels:
+        app: backend-app
+
+    spec:
+      containers:
+        - name: api
+          image: eloyvega/bootcamp-sre-backend
+          ports:
+            - containerPort: 80
